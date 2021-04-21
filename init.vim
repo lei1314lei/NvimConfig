@@ -2,12 +2,20 @@ call plug#begin('C:/Users/martin/AppData/Local/nvim/plugged')
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
-
-	autocmd FileType defx call s:defx_my_settings()
+call defx#custom#option('_', {
+      \ 'winwidth': 30,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'show_ignored_files': 0,
+      \ 'buffer_name': '',
+      \ 'toggle': 1,
+      \ 'resume': 1
+      \ })
+autocmd FileType defx call s:defx_my_settings()
 	function! s:defx_my_settings() abort
 	  " Define mappings
 	  nnoremap <silent><buffer><expr> <CR>
-	  \ defx#do_action('open')
+	  \ defx#do_action('drop')
 	  nnoremap <silent><buffer><expr> c
 	  \ defx#do_action('copy')
 	  nnoremap <silent><buffer><expr> m
@@ -68,3 +76,5 @@ call plug#end()
 	  nnoremap <silent><buffer><expr> cd
 	  \ defx#do_action('change_vim_cwd')
 	endfunction
+
+
