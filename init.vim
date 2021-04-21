@@ -2,6 +2,12 @@ call plug#begin('C:/Users/martin/AppData/Local/nvim/plugged')
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
+let g:maplocalleader=';'
+nnoremap <silent> <LocalLeader>e
+\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()`<CR>
+nnoremap <silent> <LocalLeader>a
+\ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
+
 call defx#custom#option('_', {
       \ 'winwidth': 30,
       \ 'split': 'vertical',
